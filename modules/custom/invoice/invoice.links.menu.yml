@@ -1,0 +1,6 @@
+invoice.collection:
+  title: Invoice
+  description: 'Invoice Management'
+  parent: system.admin
+  route_name: entity.invoice.collection
+  weight: 0

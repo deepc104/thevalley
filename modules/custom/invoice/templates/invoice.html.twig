@@ -1,0 +1,84 @@
+{{ attach_library('invoice/invoice.lib') }}
+<style>
+    table{border-collapse: collapse;font-family: Calibri,Arial, Helvetica, sans-serif;overflow: wrap}
+    td, th{padding: 5px 10px;height: 20px;text-align:left; font-size: 14px !important}
+    th{color:#1f497d;font-weight: bold;}
+</style>
+{% if content %}
+<div{{ attributes.addClass('invoice') }}>
+    <div class="invoice-wrapper">
+      <div class="invoice-header row">
+        <div class="col-md-9">
+               <label>{{ 'Address:'|t }}</label>
+               <div class=""><label>{{ 'Name: '|t }}</label> {{ content.name }}</div>
+               <div class=""><label>{{ 'Company Name: '|t }}</label>{{ content.company }}</div>
+               <div class=""><label>{{ 'Street: '|t }}</label>{{ content.street }}</div>
+               <div class=""><label>{{ 'House: '|t }}</label>{{ content.house }}</div>
+               <div class=""><label>{{ 'Postal Code: '|t }}</label>{{ content.postal }}</div>
+               <div class=""><label>{{ 'City: '|t }}</label>{{ content.city }}</div>
+            </div>
+            <div class="col-md-3">
+           <label>{{ 'Invoice #: '|t }}</label>{{ content.id }}
+          <div class="field field--label-inline"> 
+          <div class="field__label">{{ 'Invoice Date'|t }}</div>
+            <div class="field__item">{{ content.invoice_date }}</div>
+         </div>
+        </div>
+         </div> {# row ends #}
+         <div class="row"><div class="col-md-12"><label>{{ 'Subject: '|t }}</label>{{ content.subject }}</div></div>{# row ends #}
+         <div class="row">
+            <div class="col-md-12">
+                    <label>{{ 'List Detail:'|t }}</label>
+                   {% if content.list_details|length > 0 %}
+                   <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                {% for i,field in content.list_details %}
+                   {% set col = field|length  %}
+                              {% if i == 0 %}
+                         <tr>
+                             {% for list in field %}
+                     
+                                     <th>{{ list.label }}</th>
+                             {% endfor %}
+                          </tr>
+                               {% endif %}
+                                <tr>
+                                   {% for list in field %}
+                                     <td>{{ list.value }}</td>
+                                   {% endfor %}
+                                </tr>
+              
+                     {% endfor %}
+                      <tr>
+                         <td>Discount {{ content.discount_row.desc }}%</td>
+                         <td>{{ 'NA'|t }}</td>
+                         <td>{{ 'NA'|t }}</td>
+                         <td>-{{ content.discount_row.subtotal }}</td>
+                      </tr>            
+                   </table>
+                   {% endif %}
+               </div>
+            </div>{# row ends #}
+          
+          <div class="row footer-wrap">
+          <div class="col-md-8"></div>
+        <div class="col-md-4 align-right">
+            <table  width="100%" cellpadding="0" cellspacing="0" border="0" >
+              <tr>
+               <td><label>{{ 'Subtotal: '|t }}</label>: </td>
+             <td> {{ content.grand_subtotal }}</td>
+            </tr>
+            <tr>
+               <td><label>{{ 'Tax: '|t }}</label></td>
+             <td>{{ content.tax }}%</td>
+            </tr>
+            <tr>
+               <td><b>Total: </b></td>
+             <td>{{ content.total }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>      
+    </div>{# invoice-wrapper #}
+    <div class="align-center"><a href="{{ pdflink }}" id="download-pdf" data-file="invoice-{{ id }}" class="download-pdf btn btn-sm btn-success">Download in PDF</a></div> 
+</div>
+{% endif %}

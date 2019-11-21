@@ -1,0 +1,5 @@
+name: Invoice
+type: module
+description: 'Invoice management'
+package: custom
+core: 8.x

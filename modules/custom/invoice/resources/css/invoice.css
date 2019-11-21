@@ -1,0 +1,122 @@
+body {
+    min-height: 100% !important;
+    word-wrap: break-word !important;
+    font-family: serif !important;
+    font-size: 15px !important;
+    line-height: 1 !important;
+}
+
+.invoice-form .form-item {
+  width: 50%;
+  float: left;
+}
+
+.invoice-form .form-item.form-wrapper {
+  width: 100%;
+}
+
+.invoice-form .form-item input {
+  width: 80%;
+}
+
+.invoice-form .form-wrapper.form-actions {
+  width: 100%;
+  float: none;
+  clear: left;
+}
+
+.invoice-form  .form-item.form-item-subject {
+   width: 90%;
+}
+
+.invoice-form  .form-item.form-item-subject input {
+  width: 100%;
+}
+
+.form-item, .form-actions {
+  margin-top: 0.2em !important;
+  margin-bottom: 0.2em !important;
+}
+
+nav.action-links {
+ text-align: right;
+}
+
+.item-legend.align-left {
+    width: 100%;
+}
+
+.messages__wrapper.layout-container {
+    width: 100%;
+    float: left;
+}
+
+div#list-row-wrapper {
+    clear: left;
+    width: 100%;
+    float: none;
+}
+
+.invoice-form .fieldset-wrapper .form-item {
+  width: 15%;
+  display: table-cell;
+}
+.invoice-form .fieldset-wrapper .form-item:first-child{
+   width: 40%;
+}
+
+.invoice-form .fieldset-wrapper .form-item input {
+    width: 98%;
+}
+
+.invoice-form .fieldset-wrapper .form-item {
+    width: 15%;
+}
+
+.form-required:after {
+    vertical-align: top !important;
+}
+
+.invoice-form .form-item input.remove-btn {
+    width: 76px;
+    clear: left;
+    float: right;
+}
+
+.error-msg p, .err {
+  color: red;
+  font-size: 13px;
+}
+
+.js .dropbutton-multiple .dropbutton-widget .dropbutton {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.btn-group-sm>.btn, .btn-sm {
+    padding: 0.05rem .5rem;
+}
+
+.invoice-form .form-item.form-item-list-tax, .invoice-form .form-item.form-item-list-discount, .invoice-form .form-items.form-item-list-totals {
+  width: 15%;
+  float: none !important;
+  display: inline-block; 
+}
+
+.invoice-wrapper .row label { display: inline-block; padding: 1px 0;}
+
+ a.download-pdf:hover, a.download-pdf:focus {
+    color: #fff !important;
+}
+
+@media only screen and (max-width: 768px) {
+
+.invoice-form .fieldset-wrapper .form-item:first-child{
+   width: 100%;
+}
+
+.invoice-form .fieldset-wrapper .form-item {
+    width: 100%;
+}
+
+}

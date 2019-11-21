@@ -1,0 +1,10 @@
+'delete invoice entity':
+    title: Delete invoice
+'add invoice entity':
+    title: Add invoice
+'view invoice entity':
+    title: View invoice
+'edit invoice entity':
+    title: Edit invoice
+'administer invoice entity':
+title: Administer invoice settings    

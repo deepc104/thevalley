@@ -1,0 +1,14 @@
+invoice.lib:
+    css:
+        theme:
+            resources/css/bootstrap.min.css: {}
+            resources/css/invoice.css: {}
+           
+    js:
+        resources/js/invoice.js: {}
+    dependencies:
+        - core/jquery
+        - core/jquery.once
+        - core/jquery.ui.datepicker
+     
+        

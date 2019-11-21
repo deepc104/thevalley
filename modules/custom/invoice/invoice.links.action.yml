@@ -1,0 +1,17 @@
+invoice.add:
+  route_name: entity.invoice.add
+  title: 'Add invoice'
+  appears_on:
+    - entity.invoice.collection
+    
+invoice.list:
+  route_name: entity.invoice.collection
+  title: 'List invoice'
+  appears_on:
+    - entity.invoice.edit_form
+
+invoice.list1:
+  route_name: entity.invoice.collection
+  title: 'List invoice'
+  appears_on:
+    - entity.invoice.add

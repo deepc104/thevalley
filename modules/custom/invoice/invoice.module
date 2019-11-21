@@ -1,0 +1,77 @@
+<?php
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Entity\Entity;
+use Drupal\Core\Url;
+/*
+ * implements hook_theme()
+ */
+function invoice_theme($existing, $type, $theme, $path) {
+  $theme = [
+     'invoice' => [                           
+	      'path' => $path . '/templates',         
+	      'template'  => 'invoice',                
+	      'render element' => 'elements',
+	 ],
+  ];
+  return $theme;
+}
+
+/*
+ * implements hook_preprocess_HOOK()
+ */
+function template_preprocess_invoice(&$variables) {
+  // Helpful $content variable for templates.
+  $variables['content'] = [];
+  foreach (\Drupal\Core\Render\Element::children($variables['elements']) as $key) {
+	$entity = $variables['elements']['#invoice'];
+	$variables['id'] = $entity->id();
+	$invoice = \Drupal::entityTypeManager()->getStorage('invoice')->load($variables['id']);
+
+  	if($key == "list_details"){
+  		if(!empty($invoice->get('list_details')->value)){
+  			$list_details = Json::decode($invoice->get('list_details')->value);
+  			    $variables['content']['list_details'] = [];
+	  			 $subtotal = 0;
+				foreach($list_details as $i=>$field) {
+				   foreach($field as $label => $val){
+	  			   	  $variables['content']['list_details'][$i][$label]['label'] = ucwords(str_replace('_', ' ' , $label));
+	  			   	  $variables['content']['list_details'][$i][$label]['value'] = $val;
+					  if($label == 'subtotal') { $row_total = $val;}
+	  			   }
+				    $subtotal = $subtotal + $row_total; 
+	  		   }
+			   $grand_subtotal = $subtotal;
+  		}		
+ 	 }else {
+	     $variables['content'][$key] = $invoice->get($key)->value;
+	 }	
+  }
+
+
+ $tax_per = $variables['content']['tax']; 
+ $variables['content']['discount_row']['desc'] = $variables['content']['discount'];
+ $discount_amt =  calculate_per_to_val($variables['content']['discount_row']['desc'], $grand_subtotal);
+ $variables['content']['discount_row']['subtotal'] = $discount_amt;
+ $variables['content']['grand_subtotal'] = $grand_subtotal - $discount_amt;
+ $tax_amt =  calculate_per_to_val($tax_per, $variables['content']['grand_subtotal']);
+ $variables['content']['total'] =  round(($variables['content']['grand_subtotal'] +  $tax_amt), 2);
+  
+  $variables['url'] = $entity->toUrl()->toString();
+  $variables['pdflink'] = Url::fromRoute('entity.invoice.downloadpdf', array('invoice' => $variables['id']));
+}
+
+/*
+ * implements hook__theme_suggestions_HOOK_alter()
+ */
+function invoice_theme_suggestions_invoice_alter( array &$suggestions, array $vars, $hook ) {
+    /** @var \Drupal\artwork_provider\Entity\Artwork $invoice */
+    if ( $invoice = $vars['elements']['#invoice'] ) {
+       if (isset($vars['view_mode'])) {
+            $suggestions[] = 'invoice__' . $vars['view_mode'];
+          }
+    }
+}
+
+function calculate_per_to_val($per, $grand_Subtotal){
+  return  ($grand_Subtotal/100)*$per;
+}

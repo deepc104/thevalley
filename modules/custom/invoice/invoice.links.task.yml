@@ -1,0 +1,14 @@
+invoice.settings_tab:
+  route_name: entity.invoice.settings
+  title: Settings
+  base_route: invoice.settings
+
+invoice.view:
+  route_name: entity.invoice.canonical
+  base_route: entity.invoice.canonical
+  title: View
+
+invoice.edit_form:
+  route_name: entity.invoice.edit_form
+  base_route: entity.invoice.canonical
+  title: Edit

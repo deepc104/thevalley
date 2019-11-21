@@ -1,0 +1,49 @@
+entity.invoice.canonical:
+    path: '/invoice/{invoice}'
+    defaults:
+        _entity_view: 'invoice'
+        _title: 'Invoice Detail'
+    requirements:
+        _entity_access: 'invoice.view'
+entity.invoice.collection:
+    path: '/invoice/list'
+    defaults:
+        _entity_list: 'invoice'
+        _title: 'Invoice List'
+    requirements:
+        _permission: 'view invoice entity'
+entity.invoice.add:
+    path: '/invoice/add'
+    defaults:
+        _entity_form: invoice.add
+        _title: 'Add Invoice'
+    requirements:
+        _entity_create_access: 'invoice'
+entity.invoice.edit_form:
+    path: '/invoice/{invoice}/edit'
+    defaults:
+        _entity_form: invoice.edit
+        _title: 'Edit Invoice'
+    requirements:
+        _entity_access: 'invoice.edit'
+entity.invoice.delete_form:
+    path: '/invoice/{invoice}/delete'
+    defaults:
+        _entity_form: invoice.delete
+        _title: 'Delete Invoice'
+    requirements:
+        _entity_access: 'invoice.delete'
+entity.invoice.downloadpdf:
+    path: '/invoice/{invoice}/downloadpdf'
+    defaults:
+        _controller: \Drupal\invoice\Controller\invoiceController::generatePDF
+        _title: 'Download Invoice'
+    requirements:
+        _permission: 'administer invoice entity'       
+entity.invoice.settings:
+    path: 'admin/structure/invoice_settings'
+    defaults:
+        _form: '\Drupal\invoice\Form\InvoiceSettingsForm'
+        _title: 'invoice Settings'
+    requirements:
+        _permission: 'administer invoice entity'       
