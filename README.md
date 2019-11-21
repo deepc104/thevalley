@@ -2,9 +2,16 @@
 
 Steps: 
 
-1. Download the project.
-2. Change db details in /sites/default/settings.php
-3. Run thevalley/
+1. Download the project from here - https://github.com/deepc104/thevalley
+Or 
+1. Use git to clone using following command 
+	git clone https://github.com/deepc104/thevalley.git
+
+    Press Enter to create local clone.
+
+
+2. Change db details in /sites/default/settings.php (Run 'chmod 777 -R files settings.php' to change permissions of files folder & settings.php if required)
+3. Run thevalley/ on browser.
 4. I have used mpdf/mpdf package for download pdf functionality. 
    So mpdf/mpdf is required for that run following command (It will add mpdf in vendor dir):
 
