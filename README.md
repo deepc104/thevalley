@@ -3,7 +3,8 @@
 Steps: 
 
 1. Download the project from here - https://github.com/deepc104/thevalley
-Or 
+<br>Or 
+<br> 
 1. Use git to clone using following command 
 	git clone https://github.com/deepc104/thevalley.git
 
