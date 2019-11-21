@@ -3,13 +3,11 @@
 Steps: 
 
 1. Download the project from here - https://github.com/deepc104/thevalley
-<br>
-Or 
-<br>
+OR
 Use git to clone using following command<br><br> 
-	git clone https://github.com/deepc104/thevalley.git<br><br>
+	git clone https://github.com/deepc104/thevalley.git<br>
 
-    Press Enter to create local clone.<br>
+    Press Enter to create local clone.
 
 
 2. Change db details in /sites/default/settings.php (Run 'chmod 777 -R files settings.php' to change permissions of files folder & settings.php if required)<br>
@@ -17,7 +15,7 @@ Use git to clone using following command<br><br>
 4. I have used mpdf/mpdf package for download pdf functionality. <br>
    So mpdf/mpdf is required for that run following command (It will add mpdf in vendor dir):<br>
 
-  composer require mpdf/mpdf <br>
+  composer require mpdf/mpdf
 
 5. Go to - thevalley/admin/modules & enable invoice module. <br>
    - It will add Invoice menu administration toolbar. <br>
