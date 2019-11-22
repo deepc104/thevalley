@@ -38,7 +38,6 @@ use Drupal\Core\Entity\ContentEntityInterface;
  *   admin_permission = "administer invoice entity",
  *   links = {
  *     "canonical" = "/invoice/{invoice}",
- *     "canonical" = "/invoice/add",
  *     "edit-form" = "/invoice/{invoice}/edit",
  *     "delete-form" = "/invoice/{invoice}/delete",
  *     "collection" = "/invoice/list"
