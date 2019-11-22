@@ -10,7 +10,7 @@ Use git to clone using following command<br><br>
     Press Enter to create local clone.
 
 
-2. Change db details in /sites/default/settings.php (Run 'chmod 777 -R files settings.php' to change permissions of files folder & settings.php if required)<br>
+2. Please find DB file in BKP/ filder. Change db details in /sites/default/settings.php (Run 'chmod 777 -R files settings.php' to change permissions of files folder & settings.php if required)<br>
 3. Run thevalley/ on browser.<br>
 4. I have used mpdf/mpdf package for download pdf functionality. <br>
    So mpdf/mpdf is required for that run following command (It will add mpdf in vendor dir):<br>
